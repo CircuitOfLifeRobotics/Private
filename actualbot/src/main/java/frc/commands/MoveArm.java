@@ -14,7 +14,7 @@ import frc.subsystems.Arm.ArmState;
 public class MoveArm extends Command {
   
   ArmState state;
-  // N Word
+  // The N Word
 
   public MoveArm(ArmState s) {
     requires(Arm.getInstance());
