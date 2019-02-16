@@ -196,7 +196,7 @@ public class OI {
 			
 			@Override
 			protected void end() {
-                Intake.getInstance().setSpeed(0);
+                Intake.getInstance().setSpeed(0, -0.5);
 			}
 			
 			@Override
@@ -216,7 +216,7 @@ public class OI {
 			
 			@Override
 			protected void end() {
-                Intake.getInstance().setSpeed(0);
+                Intake.getInstance().setSpeed(0, -0.5);
 			}
 			
 			@Override
