@@ -42,5 +42,10 @@ public class Intake extends Subsystem {
     bottom.set(ControlMode.PercentOutput, speed);
   }
 
+  public void setSpeed(double topSpeed, double bottomSpeed){
+    top.set(ControlMode.PercentOutput, topSpeed);
+    bottom.set(ControlMode.PercentOutput, bottomSpeed);
+  }
+
 
 }
