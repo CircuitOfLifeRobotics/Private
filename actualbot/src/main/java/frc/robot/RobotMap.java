@@ -49,7 +49,7 @@ public class RobotMap {
     public static final double armCargoLow = 0;//same as panel low
     public static final double armCargoHigh = 3712;
     
-    public static final double armBottom = 2269;
+    public static final double armBottom = 2400;
     public static final double armMiddle = 4439;
     public static final double armHigh = 5346;
     
@@ -63,8 +63,8 @@ public class RobotMap {
     public static final double wristCargoLow = -918;//same as panel low
     public static final double wristCargoHigh = -3920;
     
-    public static final double wristBottom = -2953;
-    public static final double wristMiddle = -4061;
+    public static final double wristBottom = -3000;
+    public static final double wristMiddle = -3775;
     public static final double wristHigh = -3372;
     
     public static final double wristPanelMiddle = -1124;

@@ -20,11 +20,8 @@ public class PlacePanel extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-<<<<<<< HEAD
     // Intake.getInstance().setSpeed(-1);
-=======
     Intake.getInstance().setSpeed(0, -1);
->>>>>>> 3573570b25624869bd71bd4c63bc7f1f46c4018e
     double currentPos = Wrist.getInstance().getSetpoint();
     Wrist.getInstance().setSetpoint(currentPos - 1000);
   }
