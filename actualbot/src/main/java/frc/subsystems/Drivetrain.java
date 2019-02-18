@@ -42,7 +42,7 @@ public class Drivetrain extends Subsystem {
 
   private Drivetrain(){
 
-    leftSlaveA.follow(leftMaster);
+    leftSlaveA.follow(leftMaster); 
     leftSlaveB.follow(leftMaster);
 
     rightSlaveA.follow(rightMaster);
@@ -61,6 +61,10 @@ public class Drivetrain extends Subsystem {
 
     drive = new DifferentialDrive(leftMaster, rightMaster);
 
+  }
+  public double getPos(){
+   return rightMaster.get();
+   
   }
 
   public void shift(){

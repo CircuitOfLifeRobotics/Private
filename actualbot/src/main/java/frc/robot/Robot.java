@@ -65,7 +65,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopInit() {
-        
+        Arm.getInstance().z();
+        Wrist.getInstance().z();
   }
   
   /**
@@ -78,8 +79,9 @@ public class Robot extends TimedRobot {
 
     Scheduler.getInstance().run();
 
-    //System.out.println("Arm: " + Arm.getInstance().getPos());
-    //System.out.println("Wrist: " + Wrist.getInstance().getPos());
+    System.out.println("Arm: " + Arm.getInstance().getPos());
+    System.out.println("Wrist: " + Wrist.getInstance().getPos());
+    System.out.println("Encoder 0 "+ Drivetrain.getInstance().getPos());
 
     //Arm.getInstance().move(xbox.getRawAxis(1) / 3.0);
     //Wrist.getInstance().move(-xbox.getRawAxis(5) / 3.0);
