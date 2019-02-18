@@ -13,7 +13,7 @@ public class RobotMap {
     public static final int leftMaster = 3;
     public static final int leftSlaveA = 4;
     public static final int leftSlaveB = 5;
-    public static final int rightMaster = 0;
+    public static final int rightMaster = 24;// Dont ask just leave it -Bacon
     public static final int rightSlaveA = 1;
     public static final int rightSlaveB = 2;
 
@@ -31,15 +31,20 @@ public class RobotMap {
     public static final int intakeBottom = 6;//intake bottom
 
     //solenoid
-    public static final int shiftLow = 0;
-    public static final int shiftHigh = 1;
+    public static final int shiftLow = 1;
+    public static final int shiftHigh = 2;
 
     //******************************************
     //******************************************
+
+        /****************************************
+            NEEDS TO BE TUNED
+        ****************************************/
+
 
     //encoder position for ArmStates for arm
     public static final double armDown = 0;
-    public static final double armPickup = 400;
+    public static final double armPickup = 550;
     
     public static final double armCargoLow = 0;//same as panel low
     public static final double armCargoHigh = 3712;
@@ -53,7 +58,7 @@ public class RobotMap {
 
     //encoder position for ArmStates for wrist
     public static final double wristDown = -573;
-    public static final double wristPickUp = -2100;
+    public static final double wristPickUp = -2150;
 
     public static final double wristCargoLow = -918;//same as panel low
     public static final double wristCargoHigh = -3920;

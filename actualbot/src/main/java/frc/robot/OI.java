@@ -311,7 +311,7 @@ public class OI {
             }
             @Override
             protected void execute() {
-                Wrist.getInstance().move(xbox.getRawAxis(5) / 2.0);
+                Wrist.getInstance().move(-xbox.getRawAxis(5) / 2.0);
             }
             
             @Override
@@ -337,7 +337,7 @@ public class OI {
             double offset = 0;
             offset = Limelight.getInstance().getX();
             offset = (offset / (Math.sqrt(1 + Math.pow(offset, 2))));
-            offset /= 3.0;
+            offset /= 2.5;
 
             return -(wheel.getRawAxis(0) + offset);
 
