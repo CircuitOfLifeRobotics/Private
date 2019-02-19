@@ -34,6 +34,9 @@ public class OI {
     private Button b;
     private Button x;
     private Button y;
+    private Button start;
+
+    private POVButton grabPanel;
 
     private Trigger armDown;
     private Trigger armBottom;
@@ -77,6 +80,35 @@ public class OI {
         b = new JoystickButton(xbox, 2);
         x = new JoystickButton(xbox, 3);
         y = new JoystickButton(xbox, 4);
+        start = new JoystickButton(xbox, 8);
+        grabPanel = new POVButton(xbox, 90);
+
+        grabPanel.whenPressed(new Command(){
+
+            @Override
+            protected void initialize() {
+                Arm.getInstance().setState(ArmState.GRAB_PANEL);
+            }
+
+            @Override
+            protected boolean isFinished() {
+                return true;
+            }
+        });
+
+        start.whenPressed(new Command(){
+        
+            @Override
+            protected void initialize() {
+                Wrist.getInstance().z();
+                Arm.getInstance().z();
+            }
+
+            @Override
+            protected boolean isFinished() {
+                return true;
+            }
+        });
 
 
         armDown = new Trigger() {
@@ -336,9 +368,13 @@ public class OI {
         if(aligner.get()){
             double offset = 0;
             offset = Limelight.getInstance().getX();
-            offset = (offset / (Math.sqrt(1 + Math.pow(offset, 2))));
+            if(offset > 0.25){
+            offset = (offset / (Math.sqrt(1 + Math.pow(offset, 2)))+4);
             offset /= 2.5;
-
+            }else{
+              offset = (offset / (Math.sqrt(1 + Math.pow(offset, 2))));
+            offset /= 2.5;
+            }
             return -(wheel.getRawAxis(0) + offset);
 
 
@@ -351,4 +387,6 @@ public class OI {
     public double getDriveFwd(){
         return stick.getRawAxis(1);
     }
-}
+ 
+    }
+

@@ -20,9 +20,9 @@ public class Arm extends PIDSubsystem {
   private TalonSRX slaveTwo = new TalonSRX(RobotMap.armSlaveTwo);
   private TalonSRX slaveThree = new TalonSRX(RobotMap.armSlaveThree);
 
-  public enum ArmState{DOWN, PICKUP, CARGO_LOW, CARGO_HIGH, BOTTOM, MIDDLE, HIGH, PANEL_MIDDLE, PANEL_HIGH}
+  public enum ArmState{DOWN, PICKUP, GRAB_PANEL, CARGO_LOW, CARGO_HIGH, BOTTOM, MIDDLE, HIGH, PANEL_MIDDLE, PANEL_HIGH}
 
-  public ArmState currentState;
+  private ArmState currentState;
   
   private static Arm instance;
   public static Arm getInstance(){
@@ -217,6 +217,9 @@ public class Arm extends PIDSubsystem {
           super.setSetpoint(RobotMap.armPickup);
           Wrist.getInstance().setSetpoint(RobotMap.wristPickUp);
           break;
+        case GRAB_PANEL:
+          super.setSetpoint(RobotMap.armGrabPanel);
+          Wrist.getInstance().setSetpoint(RobotMap.wristGrabPanel);
         case CARGO_LOW:
           super.setSetpoint(RobotMap.armCargoLow);
           Wrist.getInstance().setSetpoint(RobotMap.wristCargoLow);
@@ -294,5 +297,9 @@ public class Arm extends PIDSubsystem {
     
     master.set(ControlMode.PercentOutput, -output);
 
+  }
+
+  public ArmState getCurrentArmState(){
+    return currentState;
   }
 }

@@ -45,13 +45,14 @@ public class RobotMap {
     //encoder position for ArmStates for arm
     public static final double armDown = 0;
     public static final double armPickup = 550;
+    public static final double armGrabPanel = 0;
     
     public static final double armCargoLow = 0;//same as panel low
-    public static final double armCargoHigh = 3712;
+    public static final double armCargoHigh = 3770;
     
-    public static final double armBottom = 2400;
-    public static final double armMiddle = 4439;
-    public static final double armHigh = 5346;
+    public static final double armBottom = 2549;
+    public static final double armMiddle = 4550;
+    public static final double armHigh = 5598;
     
     public static final double armPanelMiddle = 2600;
     public static final double armPanelHigh = 4657;
@@ -59,12 +60,13 @@ public class RobotMap {
     //encoder position for ArmStates for wrist
     public static final double wristDown = -573;
     public static final double wristPickUp = -2150;
+    public static final double wristGrabPanel = -321;
 
-    public static final double wristCargoLow = -918;//same as panel low
+    public static final double wristCargoLow = -160;//same as panel low
     public static final double wristCargoHigh = -3920;
     
-    public static final double wristBottom = -3000;
-    public static final double wristMiddle = -3775;
+    public static final double wristBottom = -2950;
+    public static final double wristMiddle = -4000;
     public static final double wristHigh = -3372;
     
     public static final double wristPanelMiddle = -1124;
