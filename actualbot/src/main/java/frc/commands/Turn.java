@@ -8,19 +8,29 @@
 package frc.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.utilities.*;
-import frc.robot.*;
+import frc.subsystems.Drivetrain;
 
-public class Alignment extends Command {
-  public Alignment() {
+public class Turn extends Command {
+
+  private final double TOLERANCE = 100;
+  private double position;
+
+  public Turn(double pos) {//right-== true
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    position = pos;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Drivetrain.getInstance().zero();
 
+    if(position > 0){
+      Drivetrain.getInstance().setSpeed(0, .2);
+    }else{
+      Drivetrain.getInstance().setSpeed(0, -.2);
+    }
 
   }
 
@@ -28,18 +38,21 @@ public class Alignment extends Command {
   @Override
   protected void execute() {
 
-   
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return Drivetrain.getInstance().getRightPosition() > (position - TOLERANCE) 
+    && Drivetrain.getInstance().getRightPosition() < (position + TOLERANCE);
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+
+    Drivetrain.getInstance().setSpeed(0, 0);
   }
 
   // Called when another command which requires one or more of the same

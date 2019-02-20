@@ -361,6 +361,27 @@ public class OI {
 
         placer = new JoystickButton(xbox, 6);
         placer.whenPressed(new PlacePanel());
+
+        /*****************************************/
+
+        aligner.whenPressed(new Command(){
+
+            @Override
+            protected void initialize() {
+                Limelight.getInstance().switchState();
+            }
+
+            @Override
+            protected void end() {
+                Limelight.getInstance().switchState();
+            }
+
+            @Override
+            protected boolean isFinished() {
+                return !aligner.get();
+            }
+
+        });
     }
 
     public double getDriveHoz(){

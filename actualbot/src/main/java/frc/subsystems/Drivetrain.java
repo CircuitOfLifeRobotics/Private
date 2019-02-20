@@ -87,5 +87,26 @@ public class Drivetrain extends Subsystem {
     drive.arcadeDrive(xSpeed, zRotation);
   }
 
+  public double getLeftPosition(){
+    return leftMaster.getEncoder().getPosition();
+  }
+
+  public double getRightPosition(){
+    return rightMaster.getEncoder().getPosition();
+  }
+
+  public void zero(){
+    leftMaster.getEncoder().setPosition(0);
+    rightMaster.getEncoder().setPosition(0);
+  }
+
+  public void zero(boolean side){//right == true
+    if(side)
+      rightMaster.getEncoder().setPosition(0);
+    else 
+      leftMaster.getEncoder().setPosition(0);
+
+  }
+
 
 }

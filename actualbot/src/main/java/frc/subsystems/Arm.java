@@ -220,6 +220,7 @@ public class Arm extends PIDSubsystem {
         case GRAB_PANEL:
           super.setSetpoint(RobotMap.armGrabPanel);
           Wrist.getInstance().setSetpoint(RobotMap.wristGrabPanel);
+          break;
         case CARGO_LOW:
           super.setSetpoint(RobotMap.armCargoLow);
           Wrist.getInstance().setSetpoint(RobotMap.wristCargoLow);

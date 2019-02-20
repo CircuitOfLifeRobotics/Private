@@ -6,17 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.utilities;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Limelight {
 
-    NetworkTable table;
-    NetworkTableEntry tx;
-    CameraServer camMode;
+    private NetworkTable table;
+    private NetworkTableEntry tx;
+    private boolean isTracking;
 
     private static Limelight instance;
     public static Limelight getInstance(){
@@ -27,9 +25,24 @@ public class Limelight {
 
     private Limelight(){
         table = NetworkTableInstance.getDefault().getTable("limelight");
+        NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
+        isTracking = false;
         tx = table.getEntry("tx");
         
     }
+
+    public void switchState(){
+
+        if(isTracking){
+            NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
+        }else{
+            NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
+        }
+
+        isTracking = !isTracking;
+    }
+
+    
 
     public double getX(){
         return tx.getDouble(0.0);
