@@ -38,6 +38,8 @@ public class OI {
 
     private POVButton grabPanel;
 
+    private Button increasePower;
+
     private Trigger armDown;
     private Trigger armBottom;
     private Trigger armMiddle;
@@ -47,7 +49,6 @@ public class OI {
     private Trigger panelLow;
     private Trigger panelMiddle;
     private Trigger panelHigh;
-
 
     private Trigger intakeIn;
     private Trigger intakeOut;
@@ -82,6 +83,21 @@ public class OI {
         y = new JoystickButton(xbox, 4);
         start = new JoystickButton(xbox, 8);
         grabPanel = new POVButton(xbox, 90);
+        increasePower = new JoystickButton(xbox, 7);
+
+        increasePower.whenPressed(new Command(){
+
+            @Override
+            protected void initialize() {
+                Arm.getInstance().setMaxOutput(.4);
+            }
+
+            @Override
+            protected boolean isFinished() {
+                return true;
+            }
+
+        });
 
         grabPanel.whenPressed(new Command(){
 

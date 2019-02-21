@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc.subsystems.Arm;
@@ -21,6 +20,7 @@ import frc.subsystems.Wrist;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
 public class Robot extends TimedRobot {
   //private final Joystick xbox = new Joystick(0);
   /**
@@ -37,9 +37,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    //super.robotPeriodic();
 
-    //Scheduler.getInstance().run();
 
   }
 
@@ -67,6 +65,8 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
         Arm.getInstance().z();
         Wrist.getInstance().z();
+
+        Arm.getInstance().setMaxOutput(.3);
   }
   
   /**
@@ -81,10 +81,6 @@ public class Robot extends TimedRobot {
 
     System.out.println("Arm: " + Arm.getInstance().getPos());
     System.out.println("Wrist: " + Wrist.getInstance().getPos());
-    System.out.println("Encoder 0 "+ Drivetrain.getInstance().getPos());
-
-    //Arm.getInstance().move(xbox.getRawAxis(1) / 3.0);
-    //Wrist.getInstance().move(-xbox.getRawAxis(5) / 3.0);
 
     Drivetrain.getInstance().setSpeed(OI.getInstance().getDriveFwd(), OI.getInstance().getDriveHoz());
 

@@ -10,14 +10,13 @@ package frc.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.RobotMap;
 
 public class Wrist extends PIDSubsystem {
   
   private TalonSRX master = new TalonSRX(RobotMap.wristMotor);
+  private double maxOutput;
 
   private static Wrist instance;
   public static Wrist getInstance(){
@@ -32,6 +31,8 @@ public class Wrist extends PIDSubsystem {
     super("Wrist", 1, 1, 1);
     super.getPIDController().setContinuous(false);
     super.setAbsoluteTolerance(.05);
+
+    maxOutput = .4;
 
     master.setNeutralMode(NeutralMode.Brake);
   }
@@ -74,11 +75,11 @@ public class Wrist extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
 
-    if(Math.abs(output) > .4){
+    if(Math.abs(output) > maxOutput){
       if(output < 0){
-        output = -.4;
+        output = -maxOutput;
       }else{
-        output = .4;
+        output = maxOutput;
       }
     }
 

@@ -24,6 +24,7 @@ public class Limelight {
     }
 
     private Limelight(){
+        
         table = NetworkTableInstance.getDefault().getTable("limelight");
         NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
         isTracking = false;

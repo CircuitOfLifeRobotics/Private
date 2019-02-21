@@ -20,6 +20,8 @@ public class Arm extends PIDSubsystem {
   private TalonSRX slaveTwo = new TalonSRX(RobotMap.armSlaveTwo);
   private TalonSRX slaveThree = new TalonSRX(RobotMap.armSlaveThree);
 
+  private double maxOutput;
+
   public enum ArmState{DOWN, PICKUP, GRAB_PANEL, CARGO_LOW, CARGO_HIGH, BOTTOM, MIDDLE, HIGH, PANEL_MIDDLE, PANEL_HIGH}
 
   private ArmState currentState;
@@ -46,6 +48,8 @@ public class Arm extends PIDSubsystem {
     slaveTwo.setNeutralMode(NeutralMode.Brake);
     slaveThree.setNeutralMode(NeutralMode.Brake);
 
+
+    maxOutput = .3;
   }
   
   public void setPIDStatus(boolean status){
@@ -283,11 +287,11 @@ public class Arm extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
     
-    if(Math.abs(output) > .3){
+    if(Math.abs(output) > maxOutput){
       if(output < 0){
-        output = -.3;
+        output = -maxOutput;
       }else{
-        output = .3;
+        output = maxOutput;
       }
     }
     
@@ -298,6 +302,10 @@ public class Arm extends PIDSubsystem {
     
     master.set(ControlMode.PercentOutput, -output);
 
+  }
+
+  public void setMaxOutput(double newOutput){
+    maxOutput = newOutput;
   }
 
   public ArmState getCurrentArmState(){
