@@ -21,7 +21,7 @@ public class RobotMap {
     public static final int armMaster = 10;//front left
     public static final int armSlaveOne = 11;//back left
     public static final int armSlaveTwo = 12;//front right
-    public static final int armSlaveThree = 13;//back left
+    public static final int armSlaveThree = 13;//back right
 
     //wrist talon ports
     public static final int wristMotor = 8;
@@ -31,8 +31,8 @@ public class RobotMap {
     public static final int intakeBottom = 6;//intake bottom
 
     //solenoid
-    public static final int shiftLow = 1;
-    public static final int shiftHigh = 2;
+    public static final int shiftLow = 0;
+    public static final int shiftHigh = 1;
 
     //******************************************
 
