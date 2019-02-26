@@ -96,19 +96,19 @@ public class OI {
             }
         });
 
-        start.whenPressed(new Command(){
+        // start.whenPressed(new Command(){
         
-            @Override
-            protected void initialize() {
-                Wrist.getInstance().z();
-                Arm.getInstance().z();
-            }
+        //     @Override
+        //     protected void initialize() {
+        //         Wrist.getInstance().z();
+        //         Arm.getInstance().z();
+        //     }
 
-            @Override
-            protected boolean isFinished() {
-                return true;
-            }
-        });
+        //     @Override
+        //     protected boolean isFinished() {
+        //         return true;
+        //     }
+        // });
 
 
         armDown = new Trigger() {

@@ -33,9 +33,9 @@ public class Wrist extends PIDSubsystem {
     super.getPIDController().setContinuous(false);
     super.setAbsoluteTolerance(.05);
 
-    master.setNeutralMode(NeutralMode.Brake);
-
     master.setInverted(true);
+    master.setSensorPhase(true);
+    master.setNeutralMode(NeutralMode.Brake);
   }
 
   public void setPIDStatus(boolean status){

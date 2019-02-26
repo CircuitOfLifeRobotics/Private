@@ -25,7 +25,7 @@ public class PlacePanel extends Command {
   protected void initialize() {
 
     if(!Arm.getInstance().getCurrentArmState().equals(ArmState.CARGO_LOW)){
-      Intake.getInstance().setSpeed(-1);
+      Intake.getInstance().setSpeed(1);
     }
 
     Wrist.getInstance().setSetpoint(Wrist.getInstance().getSetpoint() - 1000);

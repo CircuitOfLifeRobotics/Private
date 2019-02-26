@@ -37,14 +37,22 @@ public class Arm extends PIDSubsystem {
     super.getPIDController().setContinuous(false);
     super.setAbsoluteTolerance(200);
 
-    slaveOne.follow(master);
-    slaveTwo.follow(master);
-    slaveThree.follow(master);
+    // slaveOne.follow(master);
+    // slaveTwo.follow(master);
+    // slaveThree.follow(master);
+
+    master.setInverted(false);
+    slaveOne.setInverted(true);
+    slaveTwo.setInverted(true);
+    slaveThree.setInverted(false);
+
 
     master.setNeutralMode(NeutralMode.Brake);
     slaveOne.setNeutralMode(NeutralMode.Brake);
     slaveTwo.setNeutralMode(NeutralMode.Brake);
     slaveThree.setNeutralMode(NeutralMode.Brake);
+
+  
 
   }
   
@@ -61,6 +69,9 @@ public class Arm extends PIDSubsystem {
 
   public void move(double speed){
     master.set(ControlMode.PercentOutput, speed);
+    slaveOne.set(ControlMode.PercentOutput, speed);
+    slaveTwo.set(ControlMode.PercentOutput, speed);
+    slaveThree.set(ControlMode.PercentOutput, speed);
   }
 
   public void changeSetpoint(double change){
@@ -91,43 +102,43 @@ public class Arm extends PIDSubsystem {
 
       switch(currentState){
         case PICKUP:
-          super.setSetpoint(RobotMap.armDown);
-          Wrist.getInstance().setSetpoint(RobotMap.wristDown);
-          currentState = ArmState.DOWN;
-        case CARGO_LOW:
           super.setSetpoint(RobotMap.armPickup);
           Wrist.getInstance().setSetpoint(RobotMap.wristPickUp);
           currentState = ArmState.PICKUP;
-          break;
-        case CARGO_HIGH:
+        case CARGO_LOW:
           super.setSetpoint(RobotMap.armCargoLow);
           Wrist.getInstance().setSetpoint(RobotMap.wristCargoLow);
           currentState = ArmState.CARGO_LOW;
           break;
-        case BOTTOM:
+        case CARGO_HIGH:
           super.setSetpoint(RobotMap.armCargoHigh);
           Wrist.getInstance().setSetpoint(RobotMap.wristCargoHigh);
           currentState = ArmState.CARGO_HIGH;
           break;
-        case MIDDLE:
+        case BOTTOM:
           super.setSetpoint(RobotMap.armBottom);
           Wrist.getInstance().setSetpoint(RobotMap.wristBottom);
           currentState = ArmState.BOTTOM;
           break;
-        case HIGH:
+        case MIDDLE:
           super.setSetpoint(RobotMap.armMiddle);
           Wrist.getInstance().setSetpoint(RobotMap.wristMiddle);
           currentState = ArmState.MIDDLE;
           break;
-        case PANEL_MIDDLE:
+        case HIGH:
           super.setSetpoint(RobotMap.armHigh);
           Wrist.getInstance().setSetpoint(RobotMap.wristHigh);
           currentState = ArmState.HIGH;
           break;
-        case PANEL_HIGH:
+        case PANEL_MIDDLE:
           super.setSetpoint(RobotMap.armPanelMiddle);
           Wrist.getInstance().setSetpoint(RobotMap.wristPanelMiddle);
           currentState = ArmState.PANEL_MIDDLE;
+          break;
+        case PANEL_HIGH:
+          super.setSetpoint(RobotMap.armPanelHigh);
+          Wrist.getInstance().setSetpoint(RobotMap.wristPanelHigh);
+          currentState = ArmState.PANEL_HIGH;
           break;
         case DOWN:
           super.setSetpoint(RobotMap.armDown);
@@ -297,6 +308,9 @@ public class Arm extends PIDSubsystem {
     if(Math.abs(master.getSelectedSensorPosition() - super.getSetpoint()) < 50) output = 0;
     
     master.set(ControlMode.PercentOutput, -output);
+    slaveOne.set(ControlMode.PercentOutput, -output);
+    slaveTwo.set(ControlMode.PercentOutput, -output);
+    slaveThree.set(ControlMode.PercentOutput, -output);
 
   }
 

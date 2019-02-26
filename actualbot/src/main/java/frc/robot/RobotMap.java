@@ -21,7 +21,7 @@ public class RobotMap {
     public static final int armMaster = 10;//front left
     public static final int armSlaveOne = 11;//back left
     public static final int armSlaveTwo = 12;//front right
-    public static final int armSlaveThree = 13;//back right
+    public static final int armSlaveThree = 13;//back left
 
     //wrist talon ports
     public static final int wristMotor = 8;
@@ -31,14 +31,14 @@ public class RobotMap {
     public static final int intakeBottom = 6;//intake bottom
 
     //solenoid
-    public static final int shiftLow = 0;
-    public static final int shiftHigh = 1;
+    public static final int shiftLow = 1;
+    public static final int shiftHigh = 2;
 
     //******************************************
 
     //encoder position for ArmStates for arm
     public static final double armDown = 0;
-    public static final double armPickup = 550;
+    public static final double armPickup = 328;
     public static final double armGrabPanel = 0;
     
     public static final double armCargoLow = 0;//same as panel low
@@ -53,7 +53,7 @@ public class RobotMap {
 
     //encoder position for ArmStates for wrist
     public static final double wristDown = -573;
-    public static final double wristPickUp = -2150;
+    public static final double wristPickUp = -2069;
     public static final double wristGrabPanel = -904;
 
     public static final double wristCargoLow = -160;//same as panel low
