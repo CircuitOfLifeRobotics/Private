@@ -8,6 +8,7 @@
 package frc.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -28,6 +29,9 @@ public class Intake extends Subsystem {
 
   private Intake(){
 
+    top.setNeutralMode(NeutralMode.Brake);
+    bottom.setNeutralMode(NeutralMode.Brake);
+
     bottom.setInverted(true);
 
   }
@@ -38,14 +42,8 @@ public class Intake extends Subsystem {
   }
 
   public void setSpeed(double speed){
-    top.set(ControlMode.PercentOutput, speed);
+    top.set(ControlMode.PercentOutput, -speed);
     bottom.set(ControlMode.PercentOutput, speed);
   }
-
-  public void setSpeed(double topSpeed, double bottomSpeed){
-    top.set(ControlMode.PercentOutput, topSpeed);
-    bottom.set(ControlMode.PercentOutput, bottomSpeed);
-  }
-
 
 }

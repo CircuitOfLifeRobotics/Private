@@ -76,13 +76,16 @@ public class Wrist extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
 
-    if(Math.abs(output) > .4){
-      if(output < 0){
-        output = -.4;
-      }else{
-        output = .4;
-      }
-    }
+    // if(Math.abs(output) > .3){
+    //   if(output < 0){
+    //     output = -.3;
+    //   }else{
+    //     output = .3;
+    //   }
+    // }
+
+    if(output > .4) output = .4;
+    if(output < -.3) output = -.3;
 
     if(Math.abs(master.getSelectedSensorPosition() - super.getSetpoint()) < 100){
       output /= 5.0;

@@ -305,6 +305,7 @@ public class Arm extends PIDSubsystem {
     if(Math.abs(master.getSelectedSensorPosition() - super.getSetpoint()) < 100){
       output /= 5.0;
     }
+    
     if(Math.abs(master.getSelectedSensorPosition() - super.getSetpoint()) < 50) output = 0;
     
     master.set(ControlMode.PercentOutput, -output);
