@@ -48,6 +48,10 @@ public class Drivetrain extends Subsystem {
     rightSlaveA.follow(rightMaster);
     rightSlaveB.follow(rightMaster);
 
+
+    //rightslaveB running backwards
+    rightSlaveB.setInverted(true);
+    
     /*
     rightMaster.setIdleMode(IdleMode.kBrake);
     rightSlaveA.setIdleMode(IdleMode.kBrake);

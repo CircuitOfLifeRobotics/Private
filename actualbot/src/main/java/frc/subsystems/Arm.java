@@ -41,7 +41,7 @@ public class Arm extends PIDSubsystem {
     // slaveTwo.follow(master);
     // slaveThree.follow(master);
 
-    master.setInverted(false);
+    master.setInverted(false);//inv
     slaveOne.setInverted(true);
     slaveTwo.setInverted(true);
     slaveThree.setInverted(false);
@@ -68,11 +68,13 @@ public class Arm extends PIDSubsystem {
   }
 
   public void move(double speed){
-    master.set(ControlMode.PercentOutput, speed);
-    slaveOne.set(ControlMode.PercentOutput, speed);
-    slaveTwo.set(ControlMode.PercentOutput, speed);
+
+    //master.set(ControlMode.PercentOutput, speed);
+    //slaveOne.set(ControlMode.PercentOutput, speed);//fine
+    //slaveTwo.set(ControlMode.PercentOutput, speed);//fine
     slaveThree.set(ControlMode.PercentOutput, speed);
-  }
+
+    }
 
   public void changeSetpoint(double change){
     change += getSetpoint();
@@ -308,9 +310,9 @@ public class Arm extends PIDSubsystem {
     
     if(Math.abs(master.getSelectedSensorPosition() - super.getSetpoint()) < 50) output = 0;
     
-    master.set(ControlMode.PercentOutput, -output);
+    //master.set(ControlMode.PercentOutput, -output);
     slaveOne.set(ControlMode.PercentOutput, -output);
-    slaveTwo.set(ControlMode.PercentOutput, -output);
+    //slaveTwo.set(ControlMode.PercentOutput, -output);
     slaveThree.set(ControlMode.PercentOutput, -output);
 
   }

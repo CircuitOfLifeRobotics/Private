@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
@@ -30,7 +29,6 @@ public class OI {
     private final Joystick stick = new Joystick(1);
     private final Joystick wheel = new Joystick(2);
 
-    private final Solenoid shooter = new Solenoid(3);
     
     private Button switchButton;
     private Button a;
@@ -67,9 +65,6 @@ public class OI {
 
     private Button placer;
 
-    private Button shoot;
-
-
     private static OI instance;
     public static OI getInstance(){
         if(instance == null) instance = new OI();
@@ -99,27 +94,6 @@ public class OI {
             protected boolean isFinished() {
                 return true;
             }
-        });
-
-        shoot.whenPressed(new Command(){
-
-            @Override
-            protected void initialize() {
-                shooter.setPulseDuration(1);
-                shooter.startPulse();
-            }
-
-            @Override
-            protected void end() {
-                
-            }
-
-            @Override
-            protected boolean isFinished() {
-                return true;
-            }
-
-
         });
 
         // start.whenPressed(new Command(){
